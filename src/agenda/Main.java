@@ -18,8 +18,9 @@ public class Main {
 	 * 
 	 * @param args
 	 * @throws IOException
+	 * @throws AgendaException 
 	 */
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, AgendaException {
 		Aplicacao aplicacao = new Aplicacao();
 		aplicacao.iniciar();
 	}

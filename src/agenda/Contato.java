@@ -84,7 +84,7 @@ public class Contato {
 	 * @throws AgendaException
 	 */
 	public void validarTelefone () throws AgendaException {
-		Pattern pRegex = Pattern.compile("[\\(\\d\\d\\)]?\\d\\d\\d\\d-\\d\\d\\d\\d");
+		Pattern pRegex = Pattern.compile("(\\(\\d\\d\\))?\\d\\d\\d\\d-\\d\\d\\d\\d");
 		Matcher m = pRegex.matcher(telefone);
 		
 		if (!(m.matches())) {

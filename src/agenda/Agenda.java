@@ -21,14 +21,14 @@ public class Agenda {
 	 * Map com os contatos, com um String nome como chave
 	 * e um contato como valor.
 	 */
-	private Map<String, Contato> contatosMap = new TreeMap<>();
+	private Map<String, Contato> contatosMap = new TreeMap<String, Contato>();
 	
 	/**
 	 * Map que organiza os contatos, onde cada chave é uma letra
 	 * e o valor é a lista de contatos em que o atributo nome
 	 * começa pela letra da chave.
 	 */
-	private Map<Character, List<Contato>> contatosPorLetraMap = new TreeMap<>();
+	private Map<Character, List<Contato>> contatosPorLetraMap = new TreeMap<Character, List<Contato>>();
 	
 	/**
 	 * Instância da classe que gerencia o arquivo
@@ -69,7 +69,7 @@ public class Agenda {
 		char letraInicial = Character.toUpperCase(nome.charAt(0));
 		List<Contato> contatosLetra = contatosPorLetraMap.get(letraInicial);
 		if (contatosLetra == null) {
-			contatosLetra = new ArrayList<>();
+			contatosLetra = new ArrayList<Contato>();
 			contatosPorLetraMap.put(letraInicial, contatosLetra);
 		}
 		contatosLetra.add(contato);
@@ -158,7 +158,7 @@ public class Agenda {
 	public List<Contato> listarContatosPorLetra(char letra) {
 		List<Contato> contatos = contatosPorLetraMap.get(Character.toUpperCase(letra));
 		if (contatos == null) {
-			contatos = new ArrayList<>();
+			contatos = new ArrayList<Contato>();
 		}
 		return contatos;
 	}
@@ -168,7 +168,7 @@ public class Agenda {
 		 * String que recebe o padrão da busca: a parte do nome precedida ou sucedida
 		 * por qualquer caracter, ou então caracter nenhum.
 		 */
-		String regex = "\\w*" + parteNome + "\\w*";
+		String regex = "([\\s*\\w*])*" + parteNome + "([\\s*\\w*])*";
 		
 		/**
 		 * Instância de Pattern que compila e expressão regular
@@ -181,7 +181,7 @@ public class Agenda {
 		/**
 		 * Lista que recebe os contatos encontrados
 		 */
-		List<Contato> contatosEncontrados = new ArrayList<>();
+		List<Contato> contatosEncontrados = new ArrayList<Contato>();
 		
 		/**
 		 * Lista recebe os contatos já existentes
@@ -191,7 +191,7 @@ public class Agenda {
 		for (Contato contato : contatosCadastrados) {
 			Matcher m = p.matcher(contato.getNome());
 			if (m.matches()) {
-				contatosEncontrados.add(contato);
+				contatosEncontrados.add(contato);				
 			}
 		}
 		

@@ -26,7 +26,7 @@ public class Aplicacao {
 	 * 
 	 * @throws IOException
 	 */
-	public void iniciar () throws IOException {
+	public void iniciar () throws IOException, AgendaException {
 
 		menu = new Menu();
 
@@ -80,7 +80,7 @@ public class Aplicacao {
 		Contato contato = new Contato(nome, telefone);
 		agenda.inserir(contato);
 		
-		System.out.println("Contato " + nome + "inserido");
+		System.out.println("Contato " + nome + " inserido");
 		System.out.println();
 	}
 	
@@ -122,7 +122,7 @@ public class Aplicacao {
 		
 		agenda.excluir(nome);
 		
-		System.out.println("Contato " + nome + "excluído");
+		System.out.println("Contato " + nome + " excluído");
 		System.out.println();
 	}
 	

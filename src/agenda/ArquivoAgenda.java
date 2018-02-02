@@ -60,9 +60,9 @@ public class ArquivoAgenda {
 		
 		try {
 			scanner = new Scanner (new File(FILE_AGENDA));
-			while (scanner.hasNext()) {
-				String linha = scanner.next();
-				String[] tokens = linha.trim().split(linha);
+			while (scanner.hasNextLine()) {
+				String linha = scanner.nextLine();
+				String[] tokens = linha.split(":");
 				Contato contato = new Contato(tokens[0], tokens[1]);
 				contatos.add(contato);
 			}

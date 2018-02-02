@@ -18,12 +18,12 @@ public class Console {
 	 * 
 	 * @return : String com linha digitada
 	 */
-	public static String readString() {
+	public static String readString() throws AgendaException{
 		try {
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 			return br.readLine();
 		} catch (IOException e) {
-			throw new RuntimeException("Erro ao ler teclado");
+			throw new RuntimeException ("Erro ao ler teclado");
 		}
 	}
 	
@@ -32,12 +32,14 @@ public class Console {
 	 * 
 	 * @return : char no início da linha digitada
 	 */
-	public static char readChar() {
+	public static char readChar() throws AgendaException {
 		try {
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 			return br.readLine().charAt(0);
 		} catch (IOException e) {
-			throw new RuntimeException("Erro ao ler teclado");
+			throw new AgendaException ("Erro ao ler teclado");
+		} catch (StringIndexOutOfBoundsException e) {
+			throw new AgendaException("Alguma letra deve ser digitada");
 		}
 	}
 	
@@ -46,12 +48,12 @@ public class Console {
 	 * 
 	 * @return : int lido do teclado.
 	 */
-	public static int readInt () {
+	public static int readInt () throws AgendaException {
 		String str = readString();
 		try {
 			return Integer.parseInt(str);
 		} catch (NumberFormatException e) {
-			throw new RuntimeException("Erro ao ler teclado: " + str + "não é um int válido");
+			throw new AgendaException ("Erro ao ler teclado: " + str + " não é um int válido.");
 		}
 	}
 }
